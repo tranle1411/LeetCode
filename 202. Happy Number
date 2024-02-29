@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int next(int n){
+        int r = 0;
+        while(n>0){
+            r += (n%10)*(n%10);
+            n /= 10;
+        }
+        return r;
+    }
+    bool isHappy(int n) {
+        int x = n;
+        int y = next(x);
+        while (y!=1 && y!=x){
+            x = next(x);
+            y = next(next(y));
+        }
+        if(y==1) return 1;
+        else return 0;
+    }
+};
